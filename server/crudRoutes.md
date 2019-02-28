@@ -1,13 +1,9 @@
 **Amenities CRUD API v. 1.00**
 ----
 
-Description: These are the API requests to interact with the database for the amenities component. \n
-GET - Retrieve amenities for single home based on that home's id from the URL. \n
-POST - Create a new amenity in the amenity table. \n
-PUT - Update an amenity in the amenity table. \n
-DELETE - Delete an amenity in the amenity table. \n
+* Description: These are the API requests to interact with the database for the amenities component. 
 
-See below for detailed route parameters and information.
+* See below for detailed route parameters and information.
 
 ## GET Amenities
   Returns amenities for a single home based on the homeId param
@@ -37,7 +33,7 @@ See below for detailed route parameters and information.
       id : [Integer],
       name : [String],
       appeal: [Integer],
-      category: [Integer],
+      category: [String],
       common: [Integer],
       description: [String],
       img_url: "[String]
@@ -46,7 +42,7 @@ See below for detailed route parameters and information.
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "Home does not exist" }`
+    **Content:** `{ error : "Amenities for this home does not exist" }`
 
 * **Sample Call:**
 
@@ -88,7 +84,7 @@ See below for detailed route parameters and information.
       id : [Integer],
       name : [String],
       appeal: [Integer],
-      category: [Integer],
+      category: [String],
       common: [Integer],
       description: [String],
       img_url: "[String]
@@ -137,11 +133,11 @@ See below for detailed route parameters and information.
 
 * **URL**
 
-  /users/:id
+  /amenities/:homeId
 
 * **Method:**
 
-  `GET`
+  `PUT`
   
 *  **URL Params**
 
@@ -155,7 +151,7 @@ See below for detailed route parameters and information.
       id : [Integer],
       name : [String],
       appeal: [Integer],
-      category: [Integer],
+      category: [String],
       common: [Integer],
       description: [String],
       img_url: "[String]
@@ -250,4 +246,5 @@ See below for detailed route parameters and information.
   ## Change History
 |Name                                 |Version    |Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Description     |
 |:----------------------------------- |:--------- |:--------- |:------- |
-|[@victorx716](https://github.com/victorx716) |1.0     |2019-02-27 |Document initial API CRUD routes for `Home Amenities` microservice.
+|[@victorx716](https://github.com/victorx716) |1.1     |2019-02-28 |Update initial API CRUD routes for `Amenities` microservice.
+|[@victorx716](https://github.com/victorx716) |1.0     |2019-02-27 |Document initial API CRUD routes for `Amenities` microservice.
