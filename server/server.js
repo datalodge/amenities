@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/api/amenities/:homeId', (req, res) => {
-  console.log(req)
+
   db.getAmenenities(req.params.homeId, (err, amenData) => {
     if(err) {
       throw err;
@@ -33,6 +33,32 @@ app.get('/api/amenities/:homeId', (req, res) => {
       res.end(stringedAmenData)
     }
   })
+
+})
+
+// app.get('/api/amenities/:homeId', (req, res) => {
+
+//   db.getAmenenity(req.params.homeId, (err, amenData) => {
+//     if(err) {
+//       throw err;
+//     } else {
+//       stringedAmenData = JSON.stringify(amenData)
+//       res.end(stringedAmenData)
+//     }
+//   })
+
+// })
+
+app.post('/api/amenities/:homeId', (req, res) => {
+
+})
+
+app.put('/api/amenities/:homeId', (req, res) => {
+
+})
+
+app.delete('/api/amenities/:homeId', (req, res) => {
+
 })
 
 app.listen(port, () => {
