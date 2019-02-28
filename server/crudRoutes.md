@@ -79,8 +79,8 @@
       }`
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "Home does not exist" }`
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "Home not found" }`
 
 * **Sample Call:**
 
