@@ -20,7 +20,7 @@
 
   * **Code:** 200 <br />
     **Content:** `{ 
-      id : 8,
+      id : 108,
       name : "Wifi",
       appeal: 9,
       category: "Basic",
@@ -94,3 +94,33 @@
       }
     });
   ```
+
+    **Update Amenity at  Home**
+----
+  Creates amenities for a single home.
+
+* **URL**
+
+  /api/amenities/:homeId
+
+* **Method:**
+
+  `PUT`
+
+----
+
+
+
+    **Delete Amenities at Home**
+----
+  Delete amenities for a single home.
+
+* **URL**
+
+  /api/amenities/:homeId
+
+* **Method:**
+
+  `DELETE`
+
+----  
