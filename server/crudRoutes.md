@@ -1,13 +1,13 @@
 **Amenities CRUD API v. 1.00**
 ----
 
-Description: These are the API requests to interact with the database for the amenities component.
-GET - Retrieve amenities for single home based on that home's id from the URL.
-POST - Create a new amenity in the amenity table.
-PUT - Update an amenity in the amenity table.
-DELETE - Delete an amenity in the amenity table.
+Description: These are the API requests to interact with the database for the amenities component. \n
+GET - Retrieve amenities for single home based on that home's id from the URL. \n
+POST - Create a new amenity in the amenity table. \n
+PUT - Update an amenity in the amenity table. \n
+DELETE - Delete an amenity in the amenity table. \n
 
-See below for detailed route parameteres and information.
+See below for detailed route parameters and information.
 
 ## GET Amenities
   Returns amenities for a single home based on the homeId param
@@ -125,7 +125,6 @@ See below for detailed route parameteres and information.
       }
     });
   ```
-
 
 ---------------------------------------------------------------------------------------------------------
 
