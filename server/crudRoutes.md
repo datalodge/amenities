@@ -1,4 +1,4 @@
-**Show Home**
+**Amenities CRUD API v. 1.00**
 ----
   Returns amenities for a single home based on the homeId param
 
@@ -99,7 +99,7 @@
 
     **Update Amenity at Home**
 ----
-  Creates an amenity in the amenity table.
+  Updates an amenity in the amenity table.
 
 * **URL**
 
