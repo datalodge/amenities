@@ -49,7 +49,7 @@
 
   **Add Amenity to Home**
 ----
-  Creates amenities for a single home.
+  Creates an amenity in the amenities table.
 
 * **URL**
 
@@ -89,15 +89,17 @@
       url: "/amenities/108",
       dataType: "json",
       type : "POST",
+      contentType: "application/json",
+      data: JSON.stringify(data),
       success : function(result) {
         console.log(result);
       }
     });
   ```
 
-    **Update Amenity at  Home**
+    **Update Amenity at Home**
 ----
-  Creates amenities for a single home.
+  Creates an amenity in the amenity table.
 
 * **URL**
 
@@ -113,7 +115,7 @@
 
     **Delete Amenities at Home**
 ----
-  Delete amenities for a single home.
+  Delete an amenity in the amenities table.
 
 * **URL**
 

@@ -1,3 +1,4 @@
 node_modules
 public/bundle.js.br
 public/bundle.js.gz
+public/bundle.js
