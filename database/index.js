@@ -17,21 +17,6 @@ const getAmenenities = function(homeId, serverCallback) {
   connection.query(query, sqlCb);
 }
 
-//GET get one
-// const getAmenenity = function(homeId, serverCallback) {
-//   let home = homeId
-//   let query = 'SELECT id, name FROM amenities,amen_join_home WHERE amen_join_home.home_id=' + 
-//               home + '&&amen_join_home.amen_id=amenities.id';
-//   let sqlCb = (err, dbData) => {
-//     if (err) {
-//       throw err;
-//     } else {
-//       serverCallback(null, dbData);
-//     }
-//   }
-//   connection.query(query, sqlCb);
-// }
-
 //POST create amenity
 const createAmenenity = function(homeId, serverCallback) {
   let query = `INSERT INTO amenities (name, appeal, category, common, description, img_url)

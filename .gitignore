@@ -2,3 +2,5 @@ node_modules
 public/bundle.js.br
 public/bundle.js.gz
 public/bundle.js
+database/homes.csv
+database/amenities.csv
