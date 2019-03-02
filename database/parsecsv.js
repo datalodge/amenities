@@ -1,7 +1,7 @@
 const csv = require("fast-csv");
 const fs = require('fs');
 
-var stream = fs.createReadStream("amenities.csv");
+var stream = fs.createReadStream("amenitiesCAS.csv");
  
 var csvStream = csv()
     .on("data", function(data){

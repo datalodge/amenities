@@ -4,3 +4,5 @@ public/bundle.js.gz
 public/bundle.js
 database/homes.csv
 database/amenities.csv
+database/homesCAS.csv
+database/amenitiesCAS.csv
