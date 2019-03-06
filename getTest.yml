@@ -1,0 +1,15 @@
+config:
+  target: 'http://localhost:3003'
+  phases:
+    - duration: 60
+      arrivalRate: 10
+scenarios:
+  - flow:
+    - get:
+        url: "/api/amenities/1500000"
+    - get:
+        url: "/api/amenities/3000000"
+    - get:
+        url: "/api/amenities/4500000"
+    - get:
+        url: "/api/amenities/6000000"                        

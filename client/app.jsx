@@ -11,7 +11,7 @@ class App extends React.Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         window.scrollTo(0, 0)
         let paramId = 100;
         let input;
@@ -27,15 +27,17 @@ class App extends React.Component {
           })
             .then((response) => response.json())
             .then((data) => {
+                // console.log('this from the client', data);
                 let houseAmenities = [];
                 for (var prop in data) {
                     houseAmenities.push(data[prop])
                 }
+                // console.log('houseAmenities', houseAmenities);
                 this.setState({
                     listingAmenities: houseAmenities
                 })
             })
-    }
+        }
 
     showModal(){
         document.body.style.setProperty('overflow','hidden')

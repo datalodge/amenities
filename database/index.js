@@ -1,67 +1,32 @@
-const mysql = require('mysql');
-const mysqlConfig = require('./config.js');
+const { Pool } = require('pg')
 
-const connection = mysql.createConnection(mysqlConfig);
+const pool = new Pool({
+  user: '',
+  host: 'localhost',
+  database: 'homes',
+  password: ''
+})
 
-//GET get all
-const getAmenenities = function(homeId, serverCallback) {
-  let query = `SELECT * FROM amenities, amen_join_home WHERE amen_join_home.home_id= 
-              ${homeId} &&amen_join_home.amen_id=amenities.id order by amenities.appeal desc`;
-  let sqlCb = (err, dbData) => {
-    if (err) {
-      throw err;
-    } else {
-      serverCallback(null, dbData);
-    }
+pool.connect((err) => {
+  if (err) {
+    console.error('connection error', err)
+  } else {
+    console.log('We are connected to your PostgreSQL database')
   }
-  connection.query(query, sqlCb);
-}
+})
 
-//POST create amenity
-const createAmenenity = function(homeId, serverCallback) {
-  let query = `INSERT INTO amenities (name, appeal, category, common, description, img_url)
-                VALUES (?, ?, ?, ?, ?, ?)`;
-  let sqlCb = (err, dbData) => {
+const getAmenenities = function(homeId, cb) {
+  pool.query(`SELECT * FROM amenities WHERE home_id = ${homeId}`, (err, res) => {
     if (err) {
-      throw err;
-    } else {
-      serverCallback(null, dbData);
+      cb(err);
     }
-  }
-  connection.query(query, sqlCb);
-}
-
-//PUT update amenity
-const updateAmenenity = function(homeId, serverCallback) {
-  let query = `UPDATE SET amenities (name, appeal, category, common, description, img_url)
-                VALUES (?, ?, ?, ?, ?, ?) WHERE ${homeId} = id`;
-  let sqlCb = (err, dbData) => {
-    if (err) {
-      throw err;
-    } else {
-      serverCallback(null, dbData);
-    }
-  }
-  connection.query(query, sqlCb);
-}
-
-//DELETE delete amenity
-const deleteAmenenity = function(homeId, serverCallback) {
-  let query = `DELETE FROM amenities WHERE id = ${homeId}`;
-  let sqlCb = (err, dbData) => {
-    if (err) {
-      throw err;
-    } else {
-      serverCallback(null, dbData);
-    }
-  }
-  connection.query(query, sqlCb);
+    // console.log('This is from the database.');
+    //have to callback the non-error case, and then the data a.k.a. res.rows
+    cb(null, res.rows);
+  })
 }
 
 module.exports = {
-  getAmenenities,
-  getAmenenity,
-  createAmenenity,
-  updateAmenenity,
-  deleteAmenenity
-};
+  pool,
+  getAmenenities
+}
