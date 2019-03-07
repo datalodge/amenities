@@ -27,12 +27,10 @@ class App extends React.Component {
           })
             .then((response) => response.json())
             .then((data) => {
-                // console.log('this from the client', data);
                 let houseAmenities = [];
                 for (var prop in data) {
                     houseAmenities.push(data[prop])
                 }
-                // console.log('houseAmenities', houseAmenities);
                 this.setState({
                     listingAmenities: houseAmenities
                 })

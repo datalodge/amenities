@@ -31,7 +31,6 @@ app.get('/api/amenities/:homeId', (req, res) => {
       throw err;
     } else {
       stringedAmenData = JSON.stringify(amenData);
-      // console.log('this is from the server', stringedAmenData)
       res.send(stringedAmenData);
     }
   });

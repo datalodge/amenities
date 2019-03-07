@@ -20,8 +20,6 @@ const getAmenenities = function(homeId, cb) {
     if (err) {
       cb(err);
     }
-    // console.log('This is from the database.');
-    //have to callback the non-error case, and then the data a.k.a. res.rows
     cb(null, res.rows);
   })
 }
