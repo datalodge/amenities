@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -20,20 +21,34 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/api/amenities/:homeId', (req, res) => {
-  console.log(req)
   db.getAmenenities(req.params.homeId, (err, amenData) => {
     if(err) {
       throw err;
     } else {
-      stringedAmenData = JSON.stringify(amenData)
-      res.end(stringedAmenData)
+      stringedAmenData = JSON.stringify(amenData);
+      res.send(stringedAmenData);
     }
-  })
+  });
 })
+
+//post request
+// app.post('/api/amenities/:homeId', (req, res) => {
+//   db.insertInfo(req.params.homeId, (err, data) => {
+//     if (err) {
+//       throw err;
+//     }
+//     res.send(JSON.stringify(data));
+//   });
+// });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/', 'index.html'));
+});
 
 app.listen(port, () => {
   console.log(`I'm serving from http://localhost:${port}`);

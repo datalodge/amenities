@@ -11,7 +11,7 @@ class App extends React.Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         window.scrollTo(0, 0)
         let paramId = 100;
         let input;
@@ -35,7 +35,7 @@ class App extends React.Component {
                     listingAmenities: houseAmenities
                 })
             })
-    }
+        }
 
     showModal(){
         document.body.style.setProperty('overflow','hidden')

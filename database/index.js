@@ -1,22 +1,45 @@
-const mysql = require('mysql');
-const mysqlConfig = require('./config.js');
+const { Pool } = require('pg')
 
-const connection = mysql.createConnection(mysqlConfig);
+const pool = new Pool({
+  user: '',
+  host: 'localhost',
+  database: 'homes',
+  password: ''
+})
 
-const getAmenenities = function(homeId, serverCallback) {
-  let home = homeId
-  let query = 'SELECT * FROM amenities,amen_join_home WHERE amen_join_home.home_id=' + 
-              home + '&&amen_join_home.amen_id=amenities.id order by amenities.appeal desc';
-  let sqlCb = (err, dbData) => {
-    if (err) {
-      throw err;
-    } else {
-      serverCallback(null, dbData);
-    }
+pool.connect((err) => {
+  if (err) {
+    console.error('connection error', err)
+  } else {
+    console.log('We are connected to your PostgreSQL database')
   }
-  connection.query(query, sqlCb);
+})
+
+const getAmenenities = function(homeId, cb) {
+  pool.query(`SELECT * FROM amenities WHERE home_id = ${homeId}`, (err, res) => {
+    if (err) {
+      cb(err);
+    }
+    cb(null, res.rows);
+  })
 }
 
+// home_id,name,appeal,category,common,description,img_url,amen_id,included
+
+// const insertInfo = (home) => {
+//   pool.query(`INSERT INTO amenities (home_id, name, appeal, category, common, description, img_url, amen_id, included)
+//     VALUES (${home.home_id}, ${home.name}, ${home.appeal}, ${home.category}, ${home.common}, ${home.description},
+//     ${home.img_url}, ${home.amen_id}, ${home.included})`, (err, data) => {
+//       if (err) {
+//         cb(err);
+//       }
+//       console.log('New home and amenity created', data);
+//     });
+// };
+ 
+
 module.exports = {
-    getAmenenities
-  };
+  pool,
+  getAmenenities,
+  // insertInfo
+}
