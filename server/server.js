@@ -36,6 +36,16 @@ app.get('/api/amenities/:homeId', (req, res) => {
   });
 })
 
+//post request
+// app.post('/api/amenities/:homeId', (req, res) => {
+//   db.insertInfo(req.params.homeId, (err, data) => {
+//     if (err) {
+//       throw err;
+//     }
+//     res.send(JSON.stringify(data));
+//   });
+// });
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/', 'index.html'));
 });

@@ -24,7 +24,22 @@ const getAmenenities = function(homeId, cb) {
   })
 }
 
+// home_id,name,appeal,category,common,description,img_url,amen_id,included
+
+// const insertInfo = (home) => {
+//   pool.query(`INSERT INTO amenities (home_id, name, appeal, category, common, description, img_url, amen_id, included)
+//     VALUES (${home.home_id}, ${home.name}, ${home.appeal}, ${home.category}, ${home.common}, ${home.description},
+//     ${home.img_url}, ${home.amen_id}, ${home.included})`, (err, data) => {
+//       if (err) {
+//         cb(err);
+//       }
+//       console.log('New home and amenity created', data);
+//     });
+// };
+ 
+
 module.exports = {
   pool,
-  getAmenenities
+  getAmenenities,
+  // insertInfo
 }

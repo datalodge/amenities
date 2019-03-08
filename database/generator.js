@@ -108,14 +108,14 @@ let photos = [
 ws.write('home_id,name,appeal,category,common,description,img_url,amen_id,included\n');
 
 for(let i=1; i<= 10000000; i++) {   
-  let numAmenities = Math.floor(Math.random() * 5) + 2;
+  let numAmenities = Math.floor(Math.random() * 5) + 3;
   let arr = ['Basic', 'Facilities', 'Hip', 'None'];
   for (let j = 1; j <= numAmenities; j++) {
   let home_id = i;
   let name = faker.commerce.product();
   let appeal = Math.floor(Math.random() * 10);
   let category = arr[Math.floor(Math.random() * 3)];
-  let common = Math.round(Math.random());
+  let common = 1;
   let description = faker.lorem.sentence().slice(0, 15);
   let img_url = photos[Math.floor(Math.random() * 97)];
   let amen_id = Math.floor(Math.random() * 15) + 1; 
