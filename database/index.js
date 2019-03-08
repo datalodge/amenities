@@ -1,67 +1,45 @@
-const mysql = require('mysql');
-const mysqlConfig = require('./config.js');
+const { Pool } = require('pg')
 
-const connection = mysql.createConnection(mysqlConfig);
+const pool = new Pool({
+  user: '',
+  host: 'localhost',
+  database: 'homes',
+  password: ''
+})
 
-//GET get all
-const getAmenenities = function(homeId, serverCallback) {
-  let query = `SELECT * FROM amenities, amen_join_home WHERE amen_join_home.home_id= 
-              ${homeId} &&amen_join_home.amen_id=amenities.id order by amenities.appeal desc`;
-  let sqlCb = (err, dbData) => {
-    if (err) {
-      throw err;
-    } else {
-      serverCallback(null, dbData);
-    }
+pool.connect((err) => {
+  if (err) {
+    console.error('connection error', err)
+  } else {
+    console.log('We are connected to your PostgreSQL database')
   }
-  connection.query(query, sqlCb);
+})
+
+const getAmenenities = function(homeId, cb) {
+  pool.query(`SELECT * FROM amenities WHERE home_id = ${homeId}`, (err, res) => {
+    if (err) {
+      cb(err);
+    }
+    cb(null, res.rows);
+  })
 }
 
-//POST create amenity
-const createAmenenity = function(homeId, serverCallback) {
-  let query = `INSERT INTO amenities (name, appeal, category, common, description, img_url)
-                VALUES (?, ?, ?, ?, ?, ?)`;
-  let sqlCb = (err, dbData) => {
-    if (err) {
-      throw err;
-    } else {
-      serverCallback(null, dbData);
-    }
-  }
-  connection.query(query, sqlCb);
-}
+// home_id,name,appeal,category,common,description,img_url,amen_id,included
 
-//PUT update amenity
-const updateAmenenity = function(homeId, serverCallback) {
-  let query = `UPDATE SET amenities (name, appeal, category, common, description, img_url)
-                VALUES (?, ?, ?, ?, ?, ?) WHERE ${homeId} = id`;
-  let sqlCb = (err, dbData) => {
-    if (err) {
-      throw err;
-    } else {
-      serverCallback(null, dbData);
-    }
-  }
-  connection.query(query, sqlCb);
-}
-
-//DELETE delete amenity
-const deleteAmenenity = function(homeId, serverCallback) {
-  let query = `DELETE FROM amenities WHERE id = ${homeId}`;
-  let sqlCb = (err, dbData) => {
-    if (err) {
-      throw err;
-    } else {
-      serverCallback(null, dbData);
-    }
-  }
-  connection.query(query, sqlCb);
-}
+// const insertInfo = (home) => {
+//   pool.query(`INSERT INTO amenities (home_id, name, appeal, category, common, description, img_url, amen_id, included)
+//     VALUES (${home.home_id}, ${home.name}, ${home.appeal}, ${home.category}, ${home.common}, ${home.description},
+//     ${home.img_url}, ${home.amen_id}, ${home.included})`, (err, data) => {
+//       if (err) {
+//         cb(err);
+//       }
+//       console.log('New home and amenity created', data);
+//     });
+// };
+ 
 
 module.exports = {
+  pool,
   getAmenenities,
-  getAmenenity,
-  createAmenenity,
-  updateAmenenity,
-  deleteAmenenity
-};
+  // insertInfo
+}

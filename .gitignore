@@ -5,3 +5,4 @@ public/bundle.js
 database/amenities.csv
 database/amenitiestest.csv
 Benchmark.txt
+newrelic.js
