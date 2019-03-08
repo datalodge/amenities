@@ -12,6 +12,7 @@ exports.config = {
   app_name: ['Amenities Module'],
   /**
    * Your New Relic license key.
+   * process.env.NEWRELIC
    */
   license_key: process.env.NEWRELIC,
   logging: {

@@ -15,6 +15,7 @@ pool.connect((err) => {
   }
 })
 
+//GET 
 const getAmenenities = function(homeId, cb) {
   pool.query(`SELECT * FROM amenities WHERE home_id = ${homeId}`, (err, res) => {
     if (err) {
@@ -24,22 +25,23 @@ const getAmenenities = function(homeId, cb) {
   })
 }
 
-// home_id,name,appeal,category,common,description,img_url,amen_id,included
-
-// const insertInfo = (home) => {
-//   pool.query(`INSERT INTO amenities (home_id, name, appeal, category, common, description, img_url, amen_id, included)
-//     VALUES (${home.home_id}, ${home.name}, ${home.appeal}, ${home.category}, ${home.common}, ${home.description},
-//     ${home.img_url}, ${home.amen_id}, ${home.included})`, (err, data) => {
-//       if (err) {
-//         cb(err);
-//       }
-//       console.log('New home and amenity created', data);
-//     });
-// };
- 
+const insertInfo = (home, callback) => {
+  console.log(home, 'this is the home')
+  let newHome = `INSERT INTO amenities (home_id, name, appeal, category, common, description, img_url, amen_id, included) 
+      VALUES (${home.home_id}, '${home.name}', ${home.appeal}, '${home.category}', ${home.common}, '${home.description}',
+      '${home.img_url}', ${home.amen_id}, ${home.included})`;
+  pool.query(newHome, (err, data) => {
+      if (err) {
+        callback(err, null)
+        return;
+      }
+      console.log('New home and amenity created');
+      callback(null, data)
+    });
+};
 
 module.exports = {
   pool,
   getAmenenities,
-  // insertInfo
+  insertInfo
 }

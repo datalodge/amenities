@@ -5,3 +5,4 @@ public/bundle.js
 Benchmark.txt
 database/amenities.csv
 database/amenitiestest.csv
+.bash_profile

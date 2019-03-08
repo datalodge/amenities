@@ -1,4 +1,4 @@
-require('newrelic');
+// require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -37,14 +37,16 @@ app.get('/api/amenities/:homeId', (req, res) => {
 })
 
 //post request
-// app.post('/api/amenities/:homeId', (req, res) => {
-//   db.insertInfo(req.params.homeId, (err, data) => {
-//     if (err) {
-//       throw err;
-//     }
-//     res.send(JSON.stringify(data));
-//   });
-// });
+app.post('/api/amenities', (req, res) => {
+  db.insertInfo(req.body, (err, data) => {
+    if (err) {
+      res.status(400).end()
+      return;
+    } else {
+      res.status(201).end();
+    }
+  });
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/', 'index.html'));
