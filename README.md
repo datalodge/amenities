@@ -1,6 +1,8 @@
 # Amenities Module
 
 > Revamped back-end amenities module for the inherited bread4bed mock front-end capstone (Airbnb-clone).
+The objective of this project is to scale a single page web application to handle production level web traffic with high uptime.
+The back-end was rewritten in Node.js, and using PostgreSQL to handle the relational data.
 
 ## Related Projects
 
