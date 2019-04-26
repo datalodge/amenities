@@ -1,25 +1,19 @@
-# amenities-module
+# Amenities Module
 
-> amenities module for the bread4bed mock front-end capstone
+> Revamped back-end amenities module for the inherited bread4bed mock front-end capstone (Airbnb-clone).
 
 ## Related Projects
 
-  - https://github.com/CodeConcierge/booking-module
-  - https://github.com/CodeConcierge/picture-view-module
-  - https://github.com/CodeConcierge/Reviews-module
+  - https://github.com/datalodge/calendar
+  - https://github.com/datalodge/photos
+  - https://github.com/datalodge/reviews
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-2. [Development](#development)
-
-#Usage
-
-1. Full webapp on http://ec2-3-89-187-136.compute-1.amazonaws.com
-  a. Edit the number at end of url to see various listings
-2. If wanting to run on local host, see (#development)
+1. [Development](#development)
 
 #Development
+## Run on localhost
 
 ### Installing Dependencies
 
