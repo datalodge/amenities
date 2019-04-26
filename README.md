@@ -13,7 +13,6 @@
 1. [Development](#development)
 
 #Development
-## Run on localhost
 
 ### Installing Dependencies
 
